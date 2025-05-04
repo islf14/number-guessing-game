@@ -49,4 +49,6 @@ $  >> 35
 $ >> 30
 # Congratulations! You guessed the correct number in 4 attempts.
 
+$ >>
+# Please, run .reboot to restart the game or .exit to finish.
 ```

@@ -1,6 +1,6 @@
 import repl from 'node:repl'
 
-const welcome = () => {
+function welcome () {
   const welcome = `
   ________________________________________________
 
@@ -18,10 +18,20 @@ const welcome = () => {
 }
 welcome()
 
-let statusGame = 'begin'
-let chances = 0
-let attempts = 0
-const randomNumber = Math.round(Math.random() * 100)
+let statusGame, chances, attempts, randomNumber
+
+function resetValues () {
+  statusGame = 'begin'
+  chances = 0
+  attempts = 0
+  randomNumber = 0
+}
+resetValues()
+
+function createRandom () {
+  randomNumber = Math.round(Math.random() * 100)
+}
+createRandom()
 
 const replServer = repl.start({
   prompt: '  >> ',
@@ -33,7 +43,9 @@ replServer.defineCommand('reboot', {
   help: 'Restart the game',
   action () {
     this.clearBufferedCommand()
-    console.log('reboot')
+    resetValues()
+    welcome()
+    createRandom()
     this.displayPrompt()
   }
 })
@@ -112,5 +124,5 @@ async function guessingGame (input) {
         } else return 'error: please must be a number from 1 to 100'
       }
     } else return 'error: must be a positive number'
-  } return ''
+  } return 'Please, run .reboot to restart the game or .exit to finish.'
 }
