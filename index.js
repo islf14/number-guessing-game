@@ -86,11 +86,7 @@ async function guessingGame (input) {
             chances = 3
             mDiff = 'Hard'
           }
-          const messageStart = `
-  Great! You have selected the ${mDiff} difficulty level.
-  Let's start the game!
-  
-  Enter your guess:`
+          const messageStart = `\n  Great! You have selected the ${mDiff} difficulty level. \n  Let's start the game! \n\n  Enter your guess:`
           return messageStart
         } else return 'error: please select the difficulty level.'
       }
@@ -109,15 +105,11 @@ async function guessingGame (input) {
                 let hint = ''
                 if (number > randomNumber) hint = 'less'
                 else hint = 'greater'
-                const messageChoose = `Incorrect! The number is ${hint} than ${number}.
-  Remaining chances: ${chances}.
-  
-  Enter your guess:`
+                const messageChoose = `Incorrect! The number is ${hint} than ${number}. \n  Remaining chances: ${chances}. \n\n  Enter your guess:`
                 return messageChoose
               } else {
                 statusGame = 'finished'
-                return `Sorry, you're out of attempts.
-  The number I was thinking of was ${randomNumber}`
+                return `Sorry, you're out of attempts.\n  The number I was thinking of was ${randomNumber}`
               }
             }
           } else return ''
